@@ -16,7 +16,7 @@ def parse():
     }
     result = defaultdict(lambda: {'label': '', 'audio': '', 'groupCount': 0, 'wordCount': 0, 'words': []})
     vocabulary_path = CUR_DIR / 'vocabulary.txt'
-    contents = '\n'.join([l.strip() for l in vocabulary_path.read_text().split('\n')])
+    contents = '\n'.join([l.strip() for l in vocabulary_path.read_text(encoding='utf-8').split('\n')])
     categories = contents.split('===\n')
     cur_id = 0
     category_index = 0
@@ -61,7 +61,7 @@ const vocabulary = {json.dumps(result, ensure_ascii=False)}
 export default vocabulary
 """
     vocabulary_js_file = CUR_DIR / 'vocabulary.js'
-    vocabulary_js_file.write_text(js_code)
+    vocabulary_js_file.write_text(js_code,encoding='utf-8')
 
 
 def download_audio():
